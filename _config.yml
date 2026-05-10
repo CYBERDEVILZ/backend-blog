@@ -2,8 +2,8 @@ title: "Backend Engineering Blog"
 description: "Deep dives into backend systems, distributed computing, APIs, databases, and engineering best practices."
 author: "Pranav"
 email: pranavcosmos4@gmail.com
-baseurl: ""
-url: ""
+baseurl: "/backend-blog"
+url: "https://cyberdevilz.github.io"
 
 theme: minima
 
