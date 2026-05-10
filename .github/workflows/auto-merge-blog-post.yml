@@ -32,19 +32,6 @@ jobs:
             }
             core.setOutput('safe', 'true');
 
-      - name: Approve PR
-        if: steps.verify.outputs.safe == 'true'
-        uses: actions/github-script@v7
-        with:
-          script: |
-            await github.rest.pulls.createReview({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              pull_number: context.payload.pull_request.number,
-              event: 'APPROVE',
-              body: 'Auto-approved: daily blog post PR touches only `_posts/`.',
-            });
-
       - name: Merge PR
         if: steps.verify.outputs.safe == 'true'
         uses: actions/github-script@v7
