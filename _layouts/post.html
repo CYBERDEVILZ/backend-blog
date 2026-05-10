@@ -1,0 +1,78 @@
+---
+layout: default
+---
+<style>
+  .post-header { margin-bottom: 2.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
+  .post-title { font-size: 2rem; font-weight: 800; line-height: 1.2; letter-spacing: -0.03em; margin-bottom: 0.75rem; }
+  .post-meta { color: var(--muted); font-size: 0.875rem; display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+  .read-time { color: var(--green); font-family: monospace; }
+
+  .post-content h2 { font-size: 1.4rem; font-weight: 700; margin: 2.5rem 0 0.75rem; color: var(--accent2); border-left: 3px solid var(--accent); padding-left: 0.75rem; }
+  .post-content h3 { font-size: 1.15rem; font-weight: 600; margin: 2rem 0 0.5rem; color: var(--text); }
+  .post-content p { margin-bottom: 1.25rem; }
+  .post-content ul, .post-content ol { margin: 0 0 1.25rem 1.5rem; }
+  .post-content li { margin-bottom: 0.4rem; }
+  .post-content blockquote {
+    border-left: 4px solid var(--accent);
+    background: var(--surface);
+    margin: 1.5rem 0;
+    padding: 1rem 1.25rem;
+    border-radius: 0 6px 6px 0;
+    color: var(--muted);
+    font-style: italic;
+  }
+  .post-content pre {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    font-size: 0.875rem;
+  }
+  .post-content code {
+    font-family: 'Cascadia Code', 'Fira Code', 'Consolas', monospace;
+    font-size: 0.875em;
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 0.1em 0.35em;
+  }
+  .post-content pre code { background: none; border: none; padding: 0; }
+  .post-content hr { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0; }
+  .post-content table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+  .post-content th { background: var(--surface); padding: 0.6rem 1rem; text-align: left; border: 1px solid var(--border); color: var(--accent2); }
+  .post-content td { padding: 0.6rem 1rem; border: 1px solid var(--border); }
+  .post-content tr:nth-child(even) td { background: var(--surface); }
+
+  .post-footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+  .back-link { color: var(--muted); font-size: 0.9rem; }
+  .back-link:hover { color: var(--text); }
+</style>
+
+<article>
+  <div class="post-header">
+    <h1 class="post-title">{{ page.title }}</h1>
+    <div class="post-meta">
+      <span>{{ page.date | date: "%B %-d, %Y" }}</span>
+      {% if page.tags %}
+        <span>
+          {% for tag in page.tags %}
+            <span class="tag">{{ tag }}</span>
+          {% endfor %}
+        </span>
+      {% endif %}
+      {% if page.read_time %}
+        <span class="read-time">~{{ page.read_time }} min read</span>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+  <div class="post-footer">
+    <a href="/" class="back-link">&larr; All posts</a>
+  </div>
+</article>

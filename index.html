@@ -1,0 +1,53 @@
+---
+layout: default
+title: "Posts"
+---
+<style>
+  .page-heading { font-size: 1.75rem; font-weight: 800; margin-bottom: 0.5rem; }
+  .page-sub { color: var(--muted); margin-bottom: 2.5rem; font-size: 0.95rem; }
+  .post-list { list-style: none; }
+  .post-item {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1rem;
+    background: var(--surface);
+    transition: border-color 0.15s;
+  }
+  .post-item:hover { border-color: var(--accent); }
+  .post-item-title { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.35rem; }
+  .post-item-title a { color: var(--text); }
+  .post-item-title a:hover { color: var(--accent2); text-decoration: none; }
+  .post-item-meta { color: var(--muted); font-size: 0.82rem; display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; }
+  .post-item-excerpt { color: var(--muted); font-size: 0.9rem; margin-top: 0.5rem; line-height: 1.5; }
+  .empty-state { color: var(--muted); text-align: center; padding: 3rem 0; }
+</style>
+
+<h1 class="page-heading">Backend Engineering</h1>
+<p class="page-sub">Daily deep dives into systems, infrastructure, APIs, databases, and backend craft.</p>
+
+{% if site.posts.size > 0 %}
+<ul class="post-list">
+  {% for post in site.posts %}
+  <li class="post-item">
+    <div class="post-item-title">
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+    </div>
+    <div class="post-item-meta">
+      <span>{{ post.date | date: "%B %-d, %Y" }}</span>
+      {% for tag in post.tags %}
+        <span class="tag">{{ tag }}</span>
+      {% endfor %}
+      {% if post.read_time %}<span style="color: var(--green); font-family: monospace;">~{{ post.read_time }}m</span>{% endif %}
+    </div>
+    {% if post.excerpt %}
+    <div class="post-item-excerpt">{{ post.excerpt | strip_html | truncate: 160 }}</div>
+    {% endif %}
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<div class="empty-state">
+  <p>No posts yet. The first one is on its way.</p>
+</div>
+{% endif %}

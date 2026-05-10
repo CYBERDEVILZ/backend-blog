@@ -1,0 +1,41 @@
+title: "Backend Engineering Blog"
+description: "Deep dives into backend systems, distributed computing, APIs, databases, and engineering best practices."
+author: "Pranav"
+email: pranavcosmos4@gmail.com
+baseurl: ""
+url: ""
+
+theme: minima
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+markdown: kramdown
+highlighter: rouge
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+permalink: /:year/:month/:day/:title/
+
+collections:
+  posts:
+    output: true
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Pranav"
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - scripts/
+  - README.md
