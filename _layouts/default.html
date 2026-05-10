@@ -88,10 +88,10 @@
 <body>
   <header>
     <div class="header-inner">
-      <a href="/" class="site-title">{{ site.title }}</a>
+      <a href="{{ '/' | relative_url }}" class="site-title">{{ site.title }}</a>
       <nav>
-        <a href="/">Posts</a>
-        <a href="/about">About</a>
+        <a href="{{ '/' | relative_url }}">Posts</a>
+        <a href="{{ '/about' | relative_url }}">About</a>
       </nav>
     </div>
   </header>
